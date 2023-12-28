@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "spfx-faq-webpart-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/spfxFaqWebpart/SpfxFaqWebpartWebPart.js",
+          "manifest": "./src/webparts/spfxFaqWebpart/SpfxFaqWebpartWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SpfxFaqWebpartWebPartStrings": "lib/webparts/spfxFaqWebpart/loc/{locale}.js"
+  }
+}
