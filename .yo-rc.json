@@ -8,12 +8,12 @@
       "@microsoft/teams-js": "2.12.0"
     },
     "version": "1.18.2",
-    "libraryName": "test-faq",
+    "libraryName": "spfx-faq-webpart",
     "libraryId": "4de189f6-5fbe-4693-b47f-e1166c16b574",
     "environment": "spo",
     "packageManager": "npm",
-    "solutionName": "test-faq",
-    "solutionShortDescription": "test-faq description",
+    "solutionName": "spfx-faq-webpart",
+    "solutionShortDescription": "Frequently Asked Questions Web Part",
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "componentType": "webpart"

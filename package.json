@@ -1,5 +1,5 @@
 {
-  "name": "test-faq",
+  "name": "spfx-faq-webpart",
   "version": "0.0.1",
   "private": true,
   "engines": {

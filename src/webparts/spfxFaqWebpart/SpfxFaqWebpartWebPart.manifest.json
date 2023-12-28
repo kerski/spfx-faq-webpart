@@ -18,11 +18,11 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
     "group": { "default": "Advanced" },
-    "title": { "default": "test-faq" },
-    "description": { "default": "test-faq description" },
+    "title": { "default": "spfx-faq-webpart" },
+    "description": { "default": "Frequently Asked Questions Web Part" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "test-faq"
+      "description": "spfx-faq-webpart"
     }
   }]
 }
