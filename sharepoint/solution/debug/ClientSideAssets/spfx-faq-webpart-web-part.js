@@ -9212,10 +9212,8 @@ var ReactFaq = /** @class */ (function (_super) {
             var result = [];
             // Get Distinct category for sorting Category
             var distCate = _this.distinct(Data, "Category");
-            distCate.sort(function (c, d) {
-                return c.CategorySortOrder - d.CategorySortOrder;
-            });
-            console.log(distCate);
+            // Sort alphabetically
+            distCate.sort(function (c, d) { return c.Category > d.Category ? 1 : -1; });
             //Sorting the FQA as per CategorySortOrder
             distCate.forEach(function (distCateItem) {
                 Data.map(function (item) {
@@ -9224,10 +9222,8 @@ var ReactFaq = /** @class */ (function (_super) {
                     }
                 });
             });
-            //Sorting the FQA as per QuestionSortOrder
-            result.sort(function (a, b) {
-                return a.QuestionSortOrder - b.QuestionSortOrder;
-            });
+            //Sorting the FQA as per Category and then Question (Alphabetically)
+            result.sort(function (a, b) { return a.Category.localeCompare(b.Category) || a.Title.localeCompare(b.Title); });
             return result;
         };
         _this.filterByValue = function (arrayData, value) {

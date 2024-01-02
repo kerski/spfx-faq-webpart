@@ -276,11 +276,9 @@ export default class ReactFaq extends React.Component<IReactFaqProps, IFaqState>
         const result = [];
         // Get Distinct category for sorting Category
         const distCate = this.distinct(Data, "Category");
-        distCate.sort((c, d) => {
-          return c.CategorySortOrder - d.CategorySortOrder;
-        });
+        // Sort alphabetically
+        distCate.sort((c, d) =>  c.Category > d.Category ? 1: -1);
 
-        console.log(distCate);
         //Sorting the FQA as per CategorySortOrder
         distCate.forEach((distCateItem) => {
           Data.map((item) => {
@@ -289,11 +287,8 @@ export default class ReactFaq extends React.Component<IReactFaqProps, IFaqState>
             }
           });
         });
-
-        //Sorting the FQA as per QuestionSortOrder
-        result.sort((a, b) => {
-          return a.QuestionSortOrder - b.QuestionSortOrder;
-        });
+        //Sorting the FQA as per Category and then Question (Alphabetically)
+        result.sort((a, b) =>  a.Category.localeCompare(b.Category) || a.Title.localeCompare(b.Title) );
         return result;
       }
 
