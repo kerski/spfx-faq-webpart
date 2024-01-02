@@ -78,6 +78,7 @@ export class FaqServices implements IFaqServices {
           return response.json().then((responseFormatted: any) => {
             if (response.ok) {
               const collection = responseFormatted.value;
+              console.log('hi');
               for (let i = 0; i < collection.length; i++) {
                 FaqProp.push({
                   Id: collection[i].Id,
@@ -89,13 +90,17 @@ export class FaqServices implements IFaqServices {
                   Modified: collection[i].Modified,
                   Link: collection[i].Link
                 });
-              }
-
+              }// end for
             }
             else {
               throw new Error(response.text().toString());
             }
 
+            // Now Sort results by Category and then Question alphabetically
+            FaqProp.sort((a, b) =>  a.Category.localeCompare(b.Category) || a.Title.localeCompare(b.Title) );              
+
+            console.log(FaqProp);
+            console.log('--return');
             return FaqProp;
           });
         });
