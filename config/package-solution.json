@@ -30,7 +30,7 @@
         "title": "spfx-faq-webpart Feature",
         "description": "The feature that activates elements of the spfx-faq-webpart solution.",
         "id": "37c6abbc-4b3b-44e2-97e6-0d27f70cc7a2",
-        "version": "1.0.0.0"
+        "version": "1.0.0.1"
       }
     ]
   },
