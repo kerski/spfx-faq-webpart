@@ -289,6 +289,9 @@ export default class ReactFaq extends React.Component<IReactFaqProps, IFaqState>
         });
         //Sorting the FQA as per Category and then Question (Alphabetically)
         result.sort((a, b) =>  a.Category.localeCompare(b.Category) || a.Title.localeCompare(b.Title) );
+        console.log("--- Results After Sort");
+        console.log(result);
+        console.log("--- Closing");
         return result;
       }
 

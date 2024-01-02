@@ -9224,6 +9224,9 @@ var ReactFaq = /** @class */ (function (_super) {
             });
             //Sorting the FQA as per Category and then Question (Alphabetically)
             result.sort(function (a, b) { return a.Category.localeCompare(b.Category) || a.Title.localeCompare(b.Title); });
+            console.log("--- Results After Sort");
+            console.log(result);
+            console.log("--- Closing");
             return result;
         };
         _this.filterByValue = function (arrayData, value) {
