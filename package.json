@@ -23,6 +23,7 @@
     "@microsoft/sp-office-ui-fabric-core": "^1.18.2",
     "@microsoft/sp-property-pane": "1.18.2",
     "@microsoft/sp-webpart-base": "1.18.2",
+    "braid-design-system": "^32.14.2",
     "global": "^4.4.0",
     "gulp-cli": "^2.3.0",
     "react": "17.0.1",
