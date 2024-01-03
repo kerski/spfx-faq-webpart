@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema">
+  <pnp:Preferences Generator="PnP.Framework, Version=1.12.2.0, Culture=neutral, PublicKeyToken=0d501f89f11b748c" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-6CFACCE50C3E421FB6D173A938C2BF34">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-6CFACCE50C3E421FB6D173A938C2BF34" Version="1" BaseSiteTemplate="GROUP#0" Scope="RootSite">
+      <pnp:Lists>
+        <pnp:ListInstance Title="Frequently Asked Questions" Description="Frequently Asked Questions" DocumentTemplate="" TemplateType="100" Url="Lists/FAQ" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="50" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/FAQ/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/FAQ/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/FAQ/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{484EB0A4-CFCE-4E00-8E2C-7A754729CCEF}" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="{site}/Lists/FAQ/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
+              <Query />
+              <ViewFields>
+                <FieldRef Name="FAQCategory" />
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="Answer" />
+                <FieldRef Name="Link" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="Off" />
+              <JSLink>clienttemplates.js</JSLink>
+              <CustomFormatter />
+              <ViewData />
+            </View>
+            <View Name="{FEBDD1E0-076C-4A4A-84CE-849A945C08B0}" DefaultView="TRUE" MobileView="TRUE" Type="HTML" DisplayName="Grouped By Question" Url="{site}/Lists/FAQ/Grouped By Question.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
+              <Query>
+                <GroupBy Collapse="TRUE" GroupLimit="30">
+                  <FieldRef Name="FAQCategory" />
+                  <FieldRef Name="LinkTitle" />
+                </GroupBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="Answer" />
+                <FieldRef Name="Link" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="Off" />
+              <JSLink>clienttemplates.js</JSLink>
+              <CustomFormatter>{"$schema":"https://developer.microsoft.com/json-schemas/sp/v2/row-formatting.schema.json","hideSelection":true,"hideColumnHeader":true,"hideListHeader":true,"groupProps":{"headerFormatter":{"elmType":"div","attributes":{"class":"sp-row-card"},"style":{"color":"black","background-color":"#FAF9F9","flex-grow":"1","display":"flex","flex-direction":"row","box-sizing":"border-box","padding":"4px 8px 5px 8px","border-radius":"6px","align-items":"center","flex-wrap":"nowrap","overflow":"auto","margin":"1px 4px 4px 1px"},"children":[{"elmType":"img","style":{"max-width":"24px","max-height":"24px","margin-top":"2px","border-radius":"2px"}},{"elmType":"div","children":[{"elmType":"span","style":{"padding":"5px 5px 5px 5px","font-weight":"500","font-size":"20px"},"txtContent":"@group.fieldData.displayValue"}]},{"elmType":"div","children":[{"elmType":"div","style":{"display":"flex","flex-direction":"column","justify-content":"center"}}]}]}},"rowFormatter":{"elmType":"div","attributes":{"class":"ms-bgColor-themeLighterAlt"},"style":{"justify-content":"start","color":"ms-fontColor-Primary","display":"flex","padding":"1px 8px 5px 20px","border-radius":"6px","max-width":"905px","margin":"1px 4px 4px 60px"},"children":[{"elmType":"div","style":{"text-align":"left","font-weight":"400","font-size":"16px"},"children":[{"elmType":"span","style":{"margin-top":"8px","padding-left":"1px","color":"black"},"attributes":{"class":"ms-fontSize-m","iconName":"Lightbulb"}},{"elmType":"span","attributes":{"class":"sp-row-listPadding"},"txtContent":"Answer","style":{"font-weight":"500","color":"black","padding-left":"4px"}},{"elmType":"div","attributes":{"class":"sp-row-listPadding"},"txtContent":"[$Answer]","style":{"flex-grow":"1","display":"flex","flex-direction":"column","flex-wrap":"nowrap","align-items":"center","max-width":"900px","min-width":"205px","margin-top":"8px","margin-bottom":"8px"}},{"elmType":"a","attributes":{"target":"_blank","href":"[$Link]"},"txtContent":{"operator":"+","operands":["=if(length([$Link]) &gt; 0, 'Link: ','') ","[$Link.desc]"]},"style":{}},{"elmType":"button","customRowAction":{"action":"defaultClick"},"txtContent":"Show more","attributes":{"class":"sp-row-button"},"style":{"display":"=if([$ShowMore] == 'Yes', 'block', 'none')","margin-bottom":"8px","color":"white","background-color":"#0077DB"}}]}]}}</CustomFormatter>
+              <ViewData />
+            </View>
+          </pnp:Views>
+          <pnp:Fields>
+            <Field AppendOnly="FALSE" DisplayName="Answer" Format="Dropdown" IsolateStyles="FALSE" Name="Answer" RichText="FALSE" RichTextMode="Compatible" Title="Answer" Type="Note" ID="{459e0938-d4d0-490b-a377-dc3b116d277a}" SourceID="{{listid:Frequently Asked Questions}}" StaticName="Answer" ColName="ntext2" RowOrdinal="0" CustomFormatter="{&quot;$schema&quot;:&quot;https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json&quot;,&quot;elmType&quot;:&quot;span&quot;,&quot;txtContent&quot;:&quot;@currentField&quot;,&quot;style&quot;:{&quot;width&quot;:&quot;5000px&quot;}}" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RestrictedMode="TRUE" Version="7" />
+            <Field Type="Choice" DisplayName="Category" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{671c5d8a-bf25-4b5a-86a8-b68619b60eda}" SourceID="{{listid:Frequently Asked Questions}}" StaticName="FAQCategory" Name="FAQCategory" ColName="nvarchar7" RowOrdinal="0" CustomFormatter="" Version="4">
+              <Default>Business Metrics</Default>
+              <CHOICES>
+                <CHOICE>Dashboard / Reporting</CHOICE>
+                <CHOICE>Data Sources</CHOICE>
+                <CHOICE>Product Metrics</CHOICE>
+                <CHOICE>Product Scorecard (PSC)</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field DisplayName="Link" Format="Hyperlink" IsModern="TRUE" Name="Link" Title="Link" Type="URL" ID="{4132d01d-44a8-4064-8fcb-4dd8207a88a6}" SourceID="{{listid:Frequently Asked Questions}}" StaticName="Link" ColName="nvarchar8" RowOrdinal="0" ColName2="nvarchar9" RowOrdinal2="0" />
+          </pnp:Fields>
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" DisplayName="Title" />
+            <pnp:FieldRef ID="76d13cd2-1bae-45a5-8b74-545b87b65037" Name="_ColorTag" DisplayName="Color Tag" />
+          </pnp:FieldRefs>
+          <pnp:Security>
+            <pnp:BreakRoleInheritance CopyRoleAssignments="false" ClearSubscopes="false">
+              <pnp:RoleAssignment Principal="{associatedownergroupid}" RoleDefinition="Full Control" />
+              <pnp:RoleAssignment Principal="{associatedvisitorgroupid}" RoleDefinition="Read" />
+              <pnp:RoleAssignment Principal="{associatedmembergroupid}" RoleDefinition="Read" />
+              <pnp:RoleAssignment Principal="i:0#.f|membership|john.kerski@va.gov" RoleDefinition="Full Control" />
+            </pnp:BreakRoleInheritance>
+          </pnp:Security>
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>
