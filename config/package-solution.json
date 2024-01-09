@@ -3,7 +3,7 @@
   "solution": {
     "name": "spfx-faq-webpart-client-side-solution",
     "id": "02c59c69-3eb4-4bfa-9316-a9d314ad0b7c",
-    "version": "1.0.1.0",
+    "version": "1.0.2.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -30,7 +30,7 @@
         "title": "spfx-faq-webpart Feature",
         "description": "The feature that activates elements of the spfx-faq-webpart solution.",
         "id": "37c6abbc-4b3b-44e2-97e6-0d27f70cc7a2",
-        "version": "1.0.1.0"
+        "version": "1.0.2.0"
       }
     ]
   },
