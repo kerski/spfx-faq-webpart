@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IReactFaqProps } from './IReactFaqProps';
+import { IFaqState } from './IFaqState';
 import { IFaqProp, IFaqServices } from '../../../interface';
 import { ServiceScope, Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,27 +24,6 @@ import './index.css';
 import ErrorBoundary from './ErrorBoundary';
 
 
-
-export interface IFaqState {
-
-  originalData: IFaqProp[];
-  actualData: IFaqProp[];
-  BusinessCategory: any;
-  isLoading: boolean;
-  errorCause: string;
-  selectedEntity: any;
-  show: boolean;
-  filterData: any;
-  searchValue: string;
-  filteredCategoryData: any;
-  filteredQuestion: string;
-  value: string;
-  suggestions: any;
-  actualCanvasContentHeight: number;
-  actualCanvasWrapperHeight: number;
-  actualAccordionHeight: number;
-}
-
 // FAQ Class
 export default class ReactFaq extends React.Component<IReactFaqProps, IFaqState> {
 
@@ -51,6 +31,9 @@ export default class ReactFaq extends React.Component<IReactFaqProps, IFaqState>
 
   constructor(props) {
     super(props);
+
+
+    this.handleClearClick = this.handleClearClick.bind(this);
 
     this.state = {
       originalData: [],
@@ -82,6 +65,12 @@ export default class ReactFaq extends React.Component<IReactFaqProps, IFaqState>
     }
   }
 
+  // Handle Clear Click
+  handleClearClick() {
+    this.setState({
+      value: '',
+    });
+  }  
 
   public onHandleChange = (event, value, FaqData) => {
     if (FaqData.length > 0 && event !== undefined) {
@@ -192,7 +181,7 @@ export default class ReactFaq extends React.Component<IReactFaqProps, IFaqState>
       }
     }
 
-    // When suggestion is clicked, Autosuggest needs to populate the input
+  // When suggestion is clicked, Autosuggest needs to populate the input
   // based on the clicked suggestion. Teach Autosuggest how to calculate the
   // input value for every given suggestion.
   public getSuggestionValue = (suggestion) => {
@@ -334,7 +323,7 @@ export default class ReactFaq extends React.Component<IReactFaqProps, IFaqState>
         return monthNames[dt.getMonth()] + " " + dt.getDate() + ", " + dt.getFullYear() + " " + strTime;
       }
 
-
+      // loadMoreEvent
       public loadMoreEvent(event: any): void {
         const clickedId = event.target.getAttribute('data-id');
         console.log('clicked - ' + clickedId + ' ' + event.target);
@@ -509,6 +498,7 @@ export default class ReactFaq extends React.Component<IReactFaqProps, IFaqState>
         }
       }
 
+      // dynamicHeight
       public dynamicHeight = (): any => {
         const SPCanvasNode = document.getElementsByClassName("SPCanvas");
         const accordionNode = document.getElementsByClassName("accordion");
@@ -518,6 +508,7 @@ export default class ReactFaq extends React.Component<IReactFaqProps, IFaqState>
         }
       }
 
+      // setFaqWebPartHeightDynamic
       public setFaqWebPartHeightDynamic = (): any => {
         if (this.state.actualCanvasContentHeight === 0) {
           this.setNodeValues();
@@ -559,6 +550,7 @@ export default class ReactFaq extends React.Component<IReactFaqProps, IFaqState>
         }
       }
 
+  // Render
   public render(): React.ReactElement<IReactFaqProps> {
     let uniqueBC = [];
     let FaqData = [];
@@ -568,6 +560,7 @@ export default class ReactFaq extends React.Component<IReactFaqProps, IFaqState>
       uniqueBC = this.distinct(FaqData, "BusinessCategory");
     }
 
+    // Constant for Values and Suggestions
     const { value, suggestions } = this.state;
 
     // Autosuggest will pass through all these props to the input.
@@ -578,21 +571,36 @@ export default class ReactFaq extends React.Component<IReactFaqProps, IFaqState>
       id: 'txtSearchBox'
     };
 
+    // Clear Button
+    let clearButton;
+    if (value.length >= 1) {
+      clearButton = (
+        <button className="faq-clear-button" onClick={this.handleClearClick} title="Clear Search">
+          <FontAwesomeIcon icon={fontawesome.faTimesCircle} size="2x"/>
+        </button>
+      );
+    }    
+
     return (
       <div className={`container`}>
-
-        <div className="FaqSearchBox" accept-charset="UTF-8">
-          <Autosuggest
-            suggestions={suggestions}
-            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-            getSuggestionValue={this.getSuggestionValue}
-            renderSuggestion={this.renderSuggestion}
-            onSuggestionSelected={this.onSuggestionSelected.bind(this, this.state.actualData)}
-            inputProps={inputProps}
-            focusInputOnSuggestionClick={false}
-
-          />
+        <div className="faq-search-box" accept-charset="UTF-8">
+          <div className="faq-parent">
+            <div className="faq-child">
+              <Autosuggest
+                suggestions={suggestions}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                getSuggestionValue={this.getSuggestionValue}
+                renderSuggestion={this.renderSuggestion}
+                onSuggestionSelected={this.onSuggestionSelected.bind(this, this.state.actualData)}
+                inputProps={inputProps}
+                focusInputOnSuggestionClick={false}
+              />
+            </div>
+            <div className='faq-child'>
+                {clearButton}
+            </div>
+          </div>          
         </div>
         <ErrorBoundary>
 

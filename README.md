@@ -34,7 +34,7 @@ Invoke-PnPSiteTemplate -Path .\list_template\FAQTemplate.xml
 
 ### Configuration
 
-To point the webpart to the SharePoint list, please selected "Edit Web Part" and then enter the name of the SharePoint list under "Group Name" (see Figure 1)
+To point the webpart to the SharePoint list, please selected "Edit Web Part" and then enter the name of the SharePoint list under "List Name" (see Figure 1)
 
 #![Edit Web Part](./documentation/images/Figure1.png)
 *Figure 1 - Edit Web Part panel*

@@ -272,4 +272,26 @@
   font-style: italic;
 }
 
+.faq-parent{
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.faq-child:first-child{
+  flex: 0 1 80%;
+}
+
+.faq-child{
+  flex: 0 1 30%;
+}
+
+.faq-clear-button{
+  height:40px;
+  border-radius: 4px;
+}
+
+#txtSearchBox{
+  width:100%;
+}
 
